@@ -38,15 +38,25 @@ const editArticlePage = (req, res) => {
 }
 
 const editArticle = (req, res) => {
-    console.log(req.params.id, req.body)
     Article.findByIdAndUpdate({_id:req.params.id})
         .then( result =>{
-            console.log(result)
-            res.redirect('/')
+            result.title = req.body.title
+            result.articleText = req.body.articleText
+            console.log(req.body.id)
+            result.save()
+                .then( () => {
+                    res.redirect(`/article/${req.params.id}`)
+                })
+                .catch((err => {console.log(err)}))
         })
+        .catch(err => console.log(err))
 }
 
-
+const deleteArticle = (req, res) => {
+    Article.findByIdAndDelete({_id:req.params.id})
+        .then( () => res.redirect('/'))
+        .catch((err) => {res.redirect('/'), console.log(err)})
+}
 
 module.exports = {
     home,
@@ -54,5 +64,6 @@ module.exports = {
     createArticle,
     viewArticle,
     editArticlePage,
-    editArticle
+    editArticle,
+    deleteArticle
 }
