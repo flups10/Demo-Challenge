@@ -1,0 +1,14 @@
+<%- include('head.ejs') %>
+
+<div>
+    <h1> New Article</h1>
+    <a href="/">Back</a>
+</div>
+<form action="/new/article" method="POST">
+    <label for="title">Title</label>
+    <textarea name="title" id="title" cols="30" rows="10"></textarea>
+    <label for="article">Article</label>
+    <textarea name="articleText" id="article" cols="30" rows="10"></textarea>
+    <button type="submit">Submit</button>
+</form>
+<%- include('bottom.ejs') %>

@@ -1,0 +1,18 @@
+<%- include('head.ejs') %>
+
+<header>
+    <div>
+        <h1>The New York Times</h1>
+        <a href="/new/article">Add new article</a>
+    </div>
+</header>
+<main>
+    <% if (result.length > 0) { %>
+        <% result.forEach((r) => {  %>
+        <h3><a href="/article/<%=r._id%>"><%= r.title %></a></h3>
+        <p><%= r.articleText %></p>
+        <% }) %>
+    <% } %>
+</main>
+
+<%- include('bottom.ejs') %>

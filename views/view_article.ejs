@@ -1,0 +1,13 @@
+<%- include('head.ejs') %>
+
+<a href="/">back</a>
+<div>
+    <h1><%= result.title %></h1>
+    <p><%= result.articleText %></p>
+</div>
+<div>    
+    <a href="/edit/article/<%= result._id %>">edit</a>
+    <a href="/delete/<%= result._id %>">delete</a>
+</div>
+
+<%- include('bottom.ejs') %>
